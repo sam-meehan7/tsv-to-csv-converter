@@ -3,6 +3,7 @@ import pandas as pd
 import csv
 import re
 import io
+from datetime import datetime
 
 def clean_description(description):
     return re.sub(r'\s+', ' ', description).strip()
@@ -60,7 +61,7 @@ if uploaded_file is not None:
         st.download_button(
             label="Download CSV",
             data=csv_buffer.getvalue(),
-            file_name="converted_output.csv",
+            file_name=f"product_catalog_{datetime.now().strftime('%Y-%m-%d')}.csv",
             mime="text/csv"
         )
 
